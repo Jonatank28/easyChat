@@ -5,6 +5,7 @@ import connectDB from "./config/database";
 import http from "http";
 import { Server } from "socket.io";
 import { configurePassport } from "./config/configurePassport";
+import usersRoutes from "./routes/usersRoutes";
 
 dotenv.config();
 
@@ -35,6 +36,8 @@ export const io = new Server(server, {
     credentials: true,
   },
 });
+
+app.use(usersRoutes);
 
 // Porta
 const PORT = process.env.PORT || 3333;
